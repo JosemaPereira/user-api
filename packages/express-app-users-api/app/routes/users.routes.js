@@ -13,4 +13,7 @@ export const usersRoute = (app) => {
 
   //Edit User
   router.put('/:id', UsersController.update);
+
+  //Delete user
+  router.delete('/:id', UsersController.delete);
 };

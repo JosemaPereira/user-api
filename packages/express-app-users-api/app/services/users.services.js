@@ -18,8 +18,17 @@ export const UserServices = {
         const user = await UserModel.findOneAndUpdate({ Id: id }, newInfo, {
           new: true,
         });
-        console.log(user)
         resolve({ message: 'User Update' });
+      } catch (ex) {
+        reject({ message: ex });
+      }
+    });
+  },
+  delete: async (id) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const user = await UserModel.findOneAndDelete({ Id: id })
+        resolve({ message: 'User Deleted' });
       } catch (ex) {
         reject({ message: ex });
       }

@@ -25,4 +25,12 @@ export const UsersController = {
       next(err);
     }
   },
+  delete: async (req, res, next) => {
+    try {
+      const users = await UserServices.delete(req.params.id);
+      res.status(200).json(users);
+    } catch (err) {
+      next(err);
+    }
+  },
 };

@@ -12,4 +12,17 @@ export const UserServices = {
       }
     });
   },
+  update: async (id, newInfo) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const user = await UserModel.findOneAndUpdate({ Id: id }, newInfo, {
+          new: true,
+        });
+        console.log(user)
+        resolve({ message: 'User Update' });
+      } catch (ex) {
+        reject({ message: ex });
+      }
+    });
+  },
 };

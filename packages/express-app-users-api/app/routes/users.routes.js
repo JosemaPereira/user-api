@@ -10,4 +10,7 @@ export const usersRoute = (app) => {
 
   //Create new user
   router.post('/', UsersController.create);
+
+  //Edit User
+  router.put('/:id', UsersController.update);
 };

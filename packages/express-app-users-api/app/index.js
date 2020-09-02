@@ -1,6 +1,6 @@
 import { defaultConfig, connectDB } from './providers';
 import express from 'express';
-import { mainRoute } from './routes';
+import { mainRoute, usersRoute } from './routes';
 import { logError, handleError } from './middlewares';
 import cors from 'cors';
 import bodyParser from 'body-parser';
@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 mainRoute(app);
+usersRoute(app);
 
 app.use(logError);
 app.use(handleError);

@@ -31,8 +31,13 @@ export const UserServices = {
   create: async (user) => {
     return new Promise(async (resolve, reject) => {
       try {
-        await UserModel.create({ ...user });
-        resolve({ message: 'User created' });
+        let existUser = await UserModel.findOne({ Id: user.Id });
+        if (existUser) {
+          resolve({ user: null, message: 'User not created. Duplicate Id' });
+        } else {
+          const newUser = await UserModel.create({ ...user });
+          resolve({ user: newUser });
+        }
       } catch (ex) {
         reject({ message: ex });
       }
@@ -41,10 +46,15 @@ export const UserServices = {
   update: async (id, newInfo) => {
     return new Promise(async (resolve, reject) => {
       try {
-        const user = await UserModel.findOneAndUpdate({ Id: id }, newInfo, {
-          new: true,
-        });
-        resolve({ message: 'User Update' });
+        let existUser = await UserModel.findOne({ Id: id });
+        if (existUser) {
+          const user = await UserModel.findOneAndUpdate({ Id: id }, newInfo, {
+            new: true,
+          });
+          resolve({ user });
+        } else {
+          resolve({ user: null, message: 'UserId not found' });
+        }
       } catch (ex) {
         reject({ message: ex });
       }
@@ -53,8 +63,13 @@ export const UserServices = {
   delete: async (id) => {
     return new Promise(async (resolve, reject) => {
       try {
-        const user = await UserModel.findOneAndDelete({ Id: id });
-        resolve({ message: 'User Deleted' });
+        let existUser = await UserModel.findOne({ Id: id });
+        if (existUser) {
+          const user = await UserModel.findOneAndDelete({ Id: id });
+          resolve({ user });
+        }else{
+          resolve({ user: null, message: 'UserId not found' });
+        }
       } catch (ex) {
         reject({ message: ex });
       }

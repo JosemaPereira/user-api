@@ -2,6 +2,17 @@ import { UserModel } from '../models';
 
 export const UserServices = {
   getAll: async () => UserModel.find() || [],
+  getById: async (ids) => {
+    return new Promise(async (resolve, reject) => {
+      console.log(ids);
+      try {
+        const users = await UserModel.find({ Id: { $in: ids } });
+        resolve(users);
+      } catch (ex) {
+        reject({ message: ex });
+      }
+    });
+  },
   create: async (user) => {
     return new Promise(async (resolve, reject) => {
       try {
@@ -27,7 +38,7 @@ export const UserServices = {
   delete: async (id) => {
     return new Promise(async (resolve, reject) => {
       try {
-        const user = await UserModel.findOneAndDelete({ Id: id })
+        const user = await UserModel.findOneAndDelete({ Id: id });
         resolve({ message: 'User Deleted' });
       } catch (ex) {
         reject({ message: ex });

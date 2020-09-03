@@ -8,6 +8,9 @@ export const usersRoute = (app) => {
   //List all users
   router.get('/', UsersController.getAll);
 
+  //List by id
+  router.get('/:id', UsersController.getById);
+
   //Create new user
   router.post('/', UsersController.create);
 

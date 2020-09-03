@@ -9,6 +9,15 @@ export const UsersController = {
       next(err);
     }
   },
+  getById: async (req, res, next) => {
+    try {
+      const ids = req.params.id.split(',');
+      const users = await UserServices.getById(ids);
+      res.status(200).json(users);
+    } catch (err) {
+      next(err);
+    }
+  },
   create: async (req, res, next) => {
     try {
       const users = await UserServices.create(req.body);

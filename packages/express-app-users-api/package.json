@@ -5,7 +5,7 @@
     "main": "./dist/main.js",
     "scripts": {
         "start": "node ./dist/main.js",
-        "dev": "nodemon --exec babel-node ./app/index.js",
+        "dev": "nodemon --exec babel-node --ignore='node_modules' ./app/index.js",
         "test": "../../node_modules/.bin/mocha --require @babel/register --exit",
         "build": "../../node_modules/.bin/webpack --mode production",
         "tslint": "tslint",

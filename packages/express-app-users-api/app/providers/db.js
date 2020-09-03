@@ -13,6 +13,7 @@ export const connectDB = async () => {
         useUnifiedTopology: true,
       }
     );
+    mongoose.set('useFindAndModify', false);
     console.log('>> DB Ready');
   } catch (ex) {
     console.log(`DB Connection Failed: ${ex}`);

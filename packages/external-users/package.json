@@ -1,0 +1,29 @@
+{
+  "name": "@josema-pereira/external-users",
+  "version": "1.0.0",
+  "description": "",
+  "author": {
+    "name": "Josema Pereira"
+  },
+  "keywords": [],
+  "license": "UNLICENSED",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "fesm5": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "tslint": "tslint",
+    "tsc": "tsc",
+    "karma": "karma"
+  },
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
+}

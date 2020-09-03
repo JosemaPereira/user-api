@@ -11,7 +11,7 @@ export const UsersController = {
   },
   getById: async (req, res, next) => {
     try {
-      const ids = req.params.id.split(',');
+      const ids = req.params.id.split(',').map(Number);
       const users = await UserServices.getById(ids);
       res.status(200).json(users);
     } catch (err) {

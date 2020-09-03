@@ -1,9 +1,9 @@
 export interface UserRaw {
-  data: dataModel;
-  ad: adModel;
+  data: DataModel;
+  ad: AdModel;
 }
 
-interface dataModel {
+interface DataModel {
   id: number;
   email: string;
   first_name: string;
@@ -11,7 +11,7 @@ interface dataModel {
   avatar: string;
 }
 
-interface adModel {
+interface AdModel {
   company: string;
   url: string;
   text: string;

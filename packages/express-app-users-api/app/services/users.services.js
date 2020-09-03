@@ -1,12 +1,27 @@
 import { UserModel } from '../models';
+import { DefaultExternalUsersService } from '@josema-pereira/external-users';
+import { defaultConfig } from '../providers';
 
 export const UserServices = {
   getAll: async () => UserModel.find() || [],
   getById: async (ids) => {
     return new Promise(async (resolve, reject) => {
-      console.log(ids);
       try {
-        const users = await UserModel.find({ Id: { $in: ids } });
+        const missingIds = [];
+        let users = await UserModel.find({ Id: { $in: ids } });
+        if (users.length !== ids.length) {
+          const {
+            users: { api },
+          } = defaultConfig;
+          const service = new DefaultExternalUsersService(api);
+          ids.forEach((id) => {
+            if (!users.find((user) => user.Id === id)) {
+              missingIds.push(id);
+            }
+          });
+          const missingUsers = await service.getUsers(missingIds);
+          users = users.concat(missingUsers);
+        }
         resolve(users);
       } catch (ex) {
         reject({ message: ex });

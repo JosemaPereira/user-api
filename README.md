@@ -1,14 +1,15 @@
 # Users API
 
-This project contains a CRUD API example, using NodeJS/ExpressJS
+This project contains a CRUD API example, using NodeJS/ExpressJS and MonoRepo architecture.
 
-This repository has MonoRepo schema using Lerna.
-To build all repository follow this
+## Build packages
 
-## Run
+`yarn install && yarn build`
 
-```yarn install && yarn build```
+## Test packages
 
-## Running App
+`yarn test`
+
+## Running Users API
 
 Get into packages/express-app-users-api and follow instructions

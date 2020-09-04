@@ -7,11 +7,11 @@ To build all repository follow this
 
 ## Build packages
 
-```yarn install && yarn build```
+`yarn install && yarn build`
 
 ## Test packages
 
-```yarn test```
+`yarn test`
 
 ## Running Users API
 

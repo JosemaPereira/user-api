@@ -18,7 +18,7 @@
     "prebuild:ci": "yarn install",
     "build:ci": "yarn build:tsc && yarn build:lib && yarn test",
     "postbuild:ci": "lerna version",
-    "test": "lerna run karma -- start --single-run"
+    "test": "lerna run karma -- start --single-run && lerna run test:api"
   },
   "devDependencies": {
     "@types/jasmine": "^3.5.11",

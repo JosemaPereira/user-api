@@ -9,7 +9,9 @@
         "test": "../../node_modules/.bin/mocha --require @babel/register --exit",
         "build": "../../node_modules/.bin/webpack --mode production",
         "tslint": "tslint",
-        "build:lib": "yarn test && yarn build"
+        "build:lib": "yarn test && yarn build",
+        "test:api": "yarn test",
+        "start:api": "yarn build && yarn start"
     },
     "author": "Josema Pereira",
     "license": "MIT",

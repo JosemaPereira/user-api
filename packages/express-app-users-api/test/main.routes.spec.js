@@ -1,7 +1,7 @@
-import { mainRoute } from "../app/routes";
 import assert from "assert";
-import testServer from "./testServer";
+import { mainRoute } from "../app/routes";
 import { messageMock } from "./mocks/routes/main.routes";
+import testServer from "./testServer";
 describe("Main Routes", () => {
     const request = testServer(mainRoute);
 

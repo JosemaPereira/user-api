@@ -1,5 +1,5 @@
-import { User, UserRaw } from './models';
 import axios from 'axios';
+import { User, UserRaw } from './models';
 
 export class DefaultExternalUsersService {
   constructor(private apiUrl: string) { }

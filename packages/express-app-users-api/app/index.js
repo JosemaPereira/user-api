@@ -1,16 +1,21 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
-import { handleError, logError } from './middlewares';
-import { connectDB, defaultConfig } from './providers';
+import {
+  handleError,
+  logError,
+  configurations,
+  openDataBase,
+} from './middlewares';
+import { defaultConfig } from './providers';
 import { mainRoute, usersRoute } from './routes';
 
 const app = express();
-connectDB();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(configurations);
+app.use(openDataBase);
 mainRoute(app);
 usersRoute(app);
 

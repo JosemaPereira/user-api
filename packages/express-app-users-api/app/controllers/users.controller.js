@@ -4,6 +4,7 @@ export const UsersController = {
   getAll: async (req, res, next) => {
     try {
       const users = await UserServices.getAll();
+      req.dataBase.connection.close()
       if (users.length) {
         res.status(200).json(users);
       } else {
@@ -16,7 +17,8 @@ export const UsersController = {
   getById: async (req, res, next) => {
     try {
       const ids = req.params.id.split(',').map(Number);
-      const users = await UserServices.getById(ids);
+      const users = await UserServices.getById(ids, req.config.users.api);
+      req.dataBase.connection.close()
       if (users.length) {
         res.status(200).json(users);
       } else {
@@ -29,6 +31,7 @@ export const UsersController = {
   create: async (req, res, next) => {
     try {
       const reponse = await UserServices.create(req.body);
+      req.dataBase.connection.close()
       if (reponse.user) {
         res.status(201).json(reponse.user);
       } else {
@@ -41,6 +44,7 @@ export const UsersController = {
   update: async (req, res, next) => {
     try {
       const reponse = await UserServices.update(req.params.id, req.body);
+      req.dataBase.connection.close()
       if (reponse.user) {
         res.status(200).json(reponse.user);
       } else {
@@ -53,6 +57,7 @@ export const UsersController = {
   delete: async (req, res, next) => {
     try {
       const reponse = await UserServices.delete(req.params.id);
+      req.dataBase.connection.close()
       if (reponse.user) {
         res.status(200).json(reponse.user);
       } else {

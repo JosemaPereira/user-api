@@ -1,6 +1,6 @@
 # express-app-users-api
 
-This project contains an example CRUD API
+This project contain an example CRUD API
 
 ## Scripts
 ### Build
@@ -21,7 +21,7 @@ This project contains an example CRUD API
 
 ## Usage
 
-The project runs locale at port 3000
+The project run locale at port 3000
 
 ### User Object
 

@@ -1,19 +1,15 @@
 import { UserModel } from '../models';
 import { DefaultExternalUsersService } from '@josema-pereira/external-users';
-import { defaultConfig } from '../providers';
 
 export const UserServices = {
   getAll: async () => UserModel.find() || [],
-  getById: async (ids) => {
+  getById: async (ids, apiUrl) => {
     return new Promise(async (resolve, reject) => {
       try {
         const missingIds = [];
         let users = await UserModel.find({ Id: { $in: ids } });
         if (users.length !== ids.length) {
-          const {
-            users: { api },
-          } = defaultConfig;
-          const service = new DefaultExternalUsersService(api);
+          const service = new DefaultExternalUsersService(apiUrl);
           ids.forEach((id) => {
             if (!users.find((user) => user.Id === id)) {
               missingIds.push(id);
@@ -67,7 +63,7 @@ export const UserServices = {
         if (existUser) {
           const user = await UserModel.findOneAndDelete({ Id: id });
           resolve({ user });
-        }else{
+        } else {
           resolve({ user: null, message: 'UserId not found' });
         }
       } catch (ex) {

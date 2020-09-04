@@ -1,8 +1,9 @@
 # express-app-users-api
 
-This project contain an example CRUD API
+This project contains an example of CRUD API
 
 ## Scripts
+
 ### Build
 
 `yarn build`

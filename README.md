@@ -1,9 +1,6 @@
 # Users API
 
-This project contains a CRUD API example, using NodeJS/ExpressJS
-
-This repository has MonoRepo schema using Lerna.
-To build all repository follow this
+This project contain a CRUD API example, using NodeJS/ExpressJS and MonoRepo schema.
 
 ## Build packages
 

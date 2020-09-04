@@ -1,9 +1,9 @@
-import { defaultConfig, connectDB } from './providers';
-import express from 'express';
-import { mainRoute, usersRoute } from './routes';
-import { logError, handleError } from './middlewares';
-import cors from 'cors';
 import bodyParser from 'body-parser';
+import cors from 'cors';
+import express from 'express';
+import { handleError, logError } from './middlewares';
+import { connectDB, defaultConfig } from './providers';
+import { mainRoute, usersRoute } from './routes';
 
 const app = express();
 connectDB();
